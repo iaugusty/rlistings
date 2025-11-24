@@ -32,7 +32,8 @@ as_listing(
   main_footer = NULL,
   prov_footer = NULL,
   split_into_pages_by_var = NULL,
-  spanning_col_labels = no_spans_df
+  spanning_col_labels = no_spans_df,
+  round_type = valid_round_type
 )
 
 spanning_col_label_df(df)
