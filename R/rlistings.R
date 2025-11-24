@@ -180,7 +180,9 @@ as_listing <- function(df,
                        main_footer = NULL,
                        prov_footer = NULL,
                        split_into_pages_by_var = NULL,
-                       spanning_col_labels = no_spans_df) {
+                       spanning_col_labels = no_spans_df,
+                       round_type = valid_round_type) {
+  round_type <- match.arg(round_type)
   checkmate::assert_multi_class(add_trailing_sep, c("character", "numeric"), null.ok = TRUE)
   checkmate::assert_string(trailing_sep, n.chars = 1)
 
@@ -300,6 +302,7 @@ as_listing <- function(df,
   prov_footer(df) <- prov_footer
   listing_dispcols(df) <- cols
   spanning_col_label_df(df) <- spanning_col_labels
+  obj_round_type(df) <- round_type
 
   if (!is.null(split_into_pages_by_var)) {
     df <- split_into_pages_by_var(df, split_into_pages_by_var)
@@ -449,7 +452,7 @@ setMethod(
                        expand_newlines = TRUE,
                        fontspec = font_spec,
                        col_gap = 3L,
-                       round_type = c("iec", "sas")) {
+                       round_type = obj_round_type(obj)) {
     ##  we intentionally silently ignore indent_rownames because listings have
     ## no rownames, but formatters::vert_pag_indices calls matrix_form(obj, TRUE)
     ## unconditionally.
@@ -570,7 +573,8 @@ setMethod(
       prov_footer = prov_footer(obj),
       col_gap = col_gap,
       fontspec = fontspec,
-      rep_cols = length(keycols)
+      rep_cols = length(keycols),
+      round_type = round_type
     )
   }
 )

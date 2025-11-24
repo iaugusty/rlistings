@@ -19,8 +19,9 @@ print.listing_df <- function(x,
                              max_width = NULL,
                              fontspec = NULL,
                              col_gap = 3L,
-                             round_type = c("iec", "sas"),
+                             round_type = valid_round_type,
                              ...) {
+  round_type <- match.arg(round_type)
   tryCatch(
     {
       cat(
@@ -54,8 +55,9 @@ setMethod("toString", "listing_df", function(x,
                                              widths = NULL,
                                              fontspec = NULL,
                                              col_gap = 3L,
-                                             round_type = c("iec", "sas"),
+                                             round_type = valid_round_type,
                                              ...) {
+  round_type = match.arg(round_type)
   toString(
     matrix_form(x, fontspec = fontspec, col_gap = col_gap, round_type = round_type),
     fontspec = fontspec,
@@ -395,5 +397,26 @@ setMethod(
   "num_rep_cols", "listing_df",
   function(obj) {
     length(get_keycols(obj))
+  }
+)
+
+#### obj_round_type getter-----
+#' @rdname listing_methods
+#' @export
+setMethod(
+  "obj_round_type", "listing_df",
+  function(obj) {
+    attr(obj, "round_type")
+  }
+)
+
+#### obj_round_type setter -----
+#' @rdname listing_methods
+#' @export
+setMethod(
+  "obj_round_type<-", "listing_df",
+  function(obj, value) {
+    attr(obj, "round_type") <- value
+    obj
   }
 )
