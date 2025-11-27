@@ -17,7 +17,7 @@
   sibpos = NA_integer_,
   nsibs = NA_integer_,
   fontspec = dflt_courier,
-  round_type = c("iec", "sas")
+  round_type = valid_round_type
 )
 }
 \arguments{

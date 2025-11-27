@@ -1,5 +1,6 @@
 ## rlistings 0.2.12.9001
  * Fixed bug in `split_into_pages_by_var` that could not handle some listings with trailing separators.
+ * Added new `round_type` method, `iec_mod` through `valid_round_type`, from `formatters` package.
 
 ## rlistings 0.2.12
  * Added parameter `align_colnames` to `as_listings()`, along with post-processing functions `align_colnames()` and `align_colnames()<-`. This flag allows to align colnames as the column content is aligned.

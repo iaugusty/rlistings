@@ -123,6 +123,9 @@ into pages, with each page corresponding to one unique value/level of the variab
 \code{span_level}, \code{label}, \code{start}, and \code{span} defining 0 or more levels of
 addition spanning (ie grouping) of columns. Defaults to no additional spanning labels.}
 
+\item{round_type}{(\code{"iec"} (default), \code{"iec_mod"} or \code{"sas"})\cr the type of rounding to perform.
+See \code{\link[formatters:format_value]{formatters::format_value()}} for details.}
+
 \item{value}{(\code{string})\cr new value.}
 
 \item{vec}{(\code{string})\cr name of a column vector from a \code{listing_df} object to be annotated as a key column.}
